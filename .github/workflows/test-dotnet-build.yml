@@ -19,5 +19,7 @@ jobs:
         dotnet-version: '3.1.x'
     - name: display dotnet version
       run: |
+        dotnet_sdk_path=$(dirname $(which dotnet))
+        echo "Path to dotnet SDK: $dotnet_sdk_path"
+        sudo update-alternatives --install /usr/bin/dotnet dotnet $dotnet_sdk_path 100
         dotnet --version
-        echo '${{ steps.stepid.outputs.dotnet-version }}'
